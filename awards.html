@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Airline Awards | GeoTrax</title>
+    <title>Asia & Pacific Region | GeoTrax</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -42,7 +42,7 @@
             left: -10%;
             width: 50vw;
             height: 50vh;
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
             z-index: -1;
             pointer-events: none;
         }
@@ -113,137 +113,101 @@
         }
 
         .container { 
-            max-width: 1000px; 
+            max-width: 900px; 
             margin: 60px auto; 
             padding: 0 6%; 
             animation: subtleDrop 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         
         h1 { 
-            font-size: 2.8rem; 
+            font-size: 2.5rem; 
             font-weight: 800;
-            margin-bottom: 15px; 
-            background: linear-gradient(135deg, #ffffff 40%, var(--glow-cyan) 100%);
+            margin-bottom: 10px; 
+            background: linear-gradient(135deg, #ffffff 40%, var(--glow-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .intro-p { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 50px; }
-
-        /* Browse Filter Groups */
-        .browse-section {
-            margin-bottom: 40px;
-            background: var(--panel-glass);
-            border: 1px solid var(--border-glass);
-            padding: 30px;
-            border-radius: 12px;
-            text-align: left;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .browse-section:hover {
-            border-color: rgba(6, 182, 212, 0.2);
-            box-shadow: 0 10px 30px rgba(5, 5, 10, 0.5);
-        }
-
-        .browse-section h3 {
-            font-size: 1.2rem;
-            margin-bottom: 18px;
-            color: #ffffff;
+        .back-btn { 
+            color: var(--glow-blue); 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-bottom: 30px; 
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            transition: color 0.2s ease, transform 0.2s ease;
         }
 
-        .browse-section h3 i {
+        .back-btn:hover { 
             color: var(--glow-cyan);
-            transition: transform 0.4s ease;
+            transform: translateX(-3px);
         }
 
-        .browse-section:hover h3 i {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .pill-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        /* Container links reset */
-        .pill-grid a {
-            text-decoration: none;
-        }
-
-        /* Interactive Cyber Option Capsules with Elastic Hover */
-        .pill {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-glass);
-            color: var(--text-light);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            user-select: none;
-            display: inline-block;
-        }
-
-        .pill:hover {
-            background: rgba(6, 182, 212, 0.1);
-            border-color: var(--glow-cyan);
-            color: #ffffff;
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.25);
-        }
-
-        .pill:active {
-            transform: translateY(-1px) scale(1.01);
-        }
-
-        /* Animated Trophy Card */
-        .award-banner { 
+        /* Combined Unified List Container */
+        .master-list-panel {
             background: var(--panel-glass); 
             border: 1px solid var(--border-glass); 
-            border-top: 4px solid var(--glow-cyan); 
-            padding: 50px; 
-            border-radius: 12px; 
-            margin-top: 50px;
-            text-align: center;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            animation: subtleDrop 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+            margin-top: 30px;
         }
 
-        .award-banner:hover {
-            transform: scale(1.01);
-            border-color: rgba(6, 182, 212, 0.3);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        /* Row item layout inside the list */
+        .list-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-glass);
+            transition: background-color 0.3s ease;
         }
 
-        .award-banner i { 
-            font-size: 4rem; 
-            color: #eab308; 
-            margin-bottom: 20px; 
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: inline-block;
+        /* Remove border on the last item */
+        .list-row:last-child {
+            border-bottom: none;
         }
 
-        .award-banner:hover i {
-            transform: scale(1.2) rotate(-5deg);
-            filter: drop-shadow(0 0 10px rgba(234, 179, 8, 0.4));
+        .list-row:hover {
+            background-color: rgba(255, 255, 255, 0.02);
         }
 
-        .award-banner h2 { margin-bottom: 10px; }
+        .airline-title {
+            font-size: 1.25rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .airline-meta {
+            color: var(--text-muted); 
+            font-size: 0.9rem; 
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-pill { 
+            background: rgba(6, 182, 212, 0.1); 
+            border: 1px solid rgba(6, 182, 212, 0.4); 
+            color: #ffffff; 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            font-size: 0.82rem; 
+            font-weight: 600; 
+            letter-spacing: 0.5px; 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         footer { 
             background-color: #060912; 
             text-align: center; 
             padding: 40px; 
             border-top: 1px solid var(--border-glass); 
-            margin-top: 120px; 
+            margin-top: 150px; 
             color: #6b7280; 
             font-size: 0.88rem;
         }
@@ -263,39 +227,37 @@
     </header>
 
     <div class="container">
-        <h1>World Airline Awards</h1>
-        <p class="intro-p">Known across the flight network as the pinnacle accolade for operational excellence in the GeoFS Virtual Airline landscape.</p>
-        
-        <div class="browse-section">
-            <h3><i class="fa-solid fa-layer-group"></i> Browse Awards by Airline Type</h3>
-            <div class="pill-grid">
-                <div class="pill">Full-Service Carriers</div>
-                <div class="pill">Low-Cost / Budget Airlines</div>
-                <div class="pill">Regional Operators</div>
-                <div class="pill">Charter Operators</div>
-            </div>
-        </div>
+        <a href="awards.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Awards</a>
+        <h1>Asia & Pacific Fleet Registry</h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem;">Active flight operations and tracking profiles for verified organizations within the Far East corridors.</p>
 
-        <div class="browse-section">
-            <h3><i class="fa-solid fa-earth-americas"></i> Browse Awards by Region</h3>
-            <div class="pill-grid">
-                <a href="asia.html"><div class="pill">Asia</div></a>
-                <a href="europe.html"><div class="pill">Europe</div></a>
-                <a href="north-america.html"><div class="pill">North America</div></a>
-                <a href="south-america.html"><div class="pill">South America</div></a>
-                <a href="africa.html"><div class="pill">Africa</div></a>
+        <div class="master-list-panel">
+            
+            <div class="list-row">
+                <div>
+                    <div class="airline-title">GlazedKimpabAir</div>
+                    <div class="airline-meta"><i class="fa-solid fa-plane-up"></i> Full-Service Mainline Operations</div>
+                </div>
+                <div class="status-pill">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Audit Active
+                </div>
             </div>
-        </div>
 
-        <div class="award-banner">
-            <i class="fa-solid fa-trophy"></i>
-            <h2>Awards Tracking Begins Soon</h2>
-            <p style="margin-top: 15px; color: var(--text-muted);">Data collection protocols commence July 1, 2026. Global user surveys will launch to register community feedback directly from virtual passengers and staff.</p>
+            <div class="list-row">
+                <div>
+                    <div class="airline-title">GlazedKimpab Express</div>
+                    <div class="airline-meta"><i class="fa-solid fa-network-wired"></i> Regional Network / Connection Shuttle</div>
+                </div>
+                <div class="status-pill">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Audit Active
+                </div>
+            </div>
+
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 GeoTrax Global Services. Formed on June 30, 2026. Commenced July 1, 2026.</p>
+        <p>&copy; 2026 GeoTrax Global Services. Fleet Data Systems Division.</p>
     </footer>
 
 </body>
