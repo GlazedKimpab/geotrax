@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asia | GeoTrax</title>
+    <title>Asia & Pacific Region | GeoTrax</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -144,66 +144,62 @@
             transform: translateX(-3px);
         }
 
-        .airline-list { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 20px; 
-            margin-top: 30px; 
-        }
-
-        /* Listing Cards */
-        .airline-card { 
+        /* Combined Unified List Container */
+        .master-list-panel {
             background: var(--panel-glass); 
             border: 1px solid var(--border-glass); 
-            padding: 25px; 
-            border-radius: 12px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+            margin-top: 30px;
         }
 
-        .airline-card:hover { 
-            transform: translateY(-4px) scale(1.01); 
-            border-color: rgba(6, 182, 212, 0.3); 
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        /* Row item layout inside the list */
+        .list-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-glass);
+            transition: background-color 0.3s ease;
         }
 
-        .airline-info h3 {
-            font-size: 1.3rem;
+        /* Remove border on the last item */
+        .list-row:last-child {
+            border-bottom: none;
+        }
+
+        .list-row:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .airline-title {
+            font-size: 1.25rem;
             color: #ffffff;
             font-weight: 600;
         }
 
-        .airline-info p {
+        .airline-meta {
             color: var(--text-muted); 
             font-size: 0.9rem; 
-            margin-top: 5px;
+            margin-top: 4px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        .status-badge { 
+        .status-pill { 
             background: rgba(6, 182, 212, 0.1); 
             border: 1px solid rgba(6, 182, 212, 0.4); 
             color: #ffffff; 
-            padding: 8px 16px; 
+            padding: 6px 14px; 
             border-radius: 20px; 
-            font-size: 0.85rem; 
+            font-size: 0.82rem; 
             font-weight: 600; 
             letter-spacing: 0.5px; 
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .airline-card:hover .status-badge {
-            background: rgba(6, 182, 212, 0.2);
-            border-color: var(--glow-cyan);
-            box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
         }
 
         footer { 
@@ -232,29 +228,31 @@
 
     <div class="container">
         <a href="awards.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Awards</a>
-        <h1>List of registered airlines in Asia</h1>
-        <p style="color: var(--text-muted); font-size: 1.1rem;">Active flight operations, hub profiles, and tracking metrics for verified organizations within the Far East corridors.</p>
+        <h1>Asia & Pacific Fleet Registry</h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem;">Active flight operations and tracking profiles for verified organizations within the Far East corridors.</p>
 
-        <div class="airline-list">
-            <div class="airline-card">
-                <div class="airline-info">
-                    <h3>• GlazedKimpabAir</h3>
-                    <p><i class="fa-solid fa-plane-up"></i> Class: Full-Service Operations</p>
+        <div class="master-list-panel">
+            
+            <div class="list-row">
+                <div>
+                    <div class="airline-title">GlazedKimpabAir</div>
+                    <div class="airline-meta"><i class="fa-solid fa-plane-up"></i> Full-Service Mainline Operations</div>
                 </div>
-                <div class="status-badge">
+                <div class="status-pill">
                     <i class="fa-solid fa-circle-notch fa-spin"></i> Audit Active
                 </div>
             </div>
 
-            <div class="airline-card">
-                <div class="airline-info">
-                    <h3>• GlazedKimpab Express</h3>
-                    <p><i class="fa-solid fa-network-wired"></i> Class: Regional Network Operations</p>
+            <div class="list-row">
+                <div>
+                    <div class="airline-title">GlazedKimpab Express</div>
+                    <div class="airline-meta"><i class="fa-solid fa-network-wired"></i> Regional Network / Connection Shuttle</div>
                 </div>
-                <div class="status-badge">
+                <div class="status-pill">
                     <i class="fa-solid fa-circle-notch fa-spin"></i> Audit Active
                 </div>
             </div>
+
         </div>
     </div>
 
