@@ -181,6 +181,8 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            text-decoration: none; /* Keeps layout clean when used as an anchor link */
+            display: block;
         }
 
         .card::before {
@@ -281,11 +283,11 @@
             <h3>In-Flight Auditing</h3>
             <p>Evaluating everything from official aircraft models down to community roleplay coordination, making sure pilots experience top tier standards.</p>
         </div>
-        <div class="card">
+        <a href="awards.html" class="card">
             <i class="fa-solid fa-trophy"></i>
             <h3>World Airline Awards</h3>
             <p>Determined entirely by community feedback, celebrating the cleanest flight mechanics, best community fleets, and top virtual staff.</p>
-        </div>
+        </a>
     </section>
 
     <footer>
