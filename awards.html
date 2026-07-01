@@ -130,7 +130,7 @@
 
         .intro-p { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 50px; }
 
-        /* Browse Filter Groups with Staggered Feel */
+        /* Browse Filter Groups */
         .browse-section {
             margin-bottom: 40px;
             background: var(--panel-glass);
@@ -172,6 +172,11 @@
             gap: 12px;
         }
 
+        /* Container links reset */
+        .pill-grid a {
+            text-decoration: none;
+        }
+
         /* Interactive Cyber Option Capsules with Elastic Hover */
         .pill {
             background: rgba(255, 255, 255, 0.03);
@@ -184,6 +189,7 @@
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             user-select: none;
+            display: inline-block;
         }
 
         .pill:hover {
@@ -273,11 +279,11 @@
         <div class="browse-section">
             <h3><i class="fa-solid fa-earth-americas"></i> Browse Awards by Region</h3>
             <div class="pill-grid">
-                <div class="pill">Asia & Pacific</div>
-                <div class="pill">Europe</div>
-                <div class="pill">North America</div>
-                <div class="pill">South America</div>
-                <div class="pill">Africa</div>
+                <a href="asia.html"><div class="pill">Asia & Pacific</div></a>
+                <a href="europe.html"><div class="pill">Europe</div></a>
+                <a href="north-america.html"><div class="pill">North America</div></a>
+                <a href="south-america.html"><div class="pill">South America</div></a>
+                <a href="africa.html"><div class="pill">Africa</div></a>
             </div>
         </div>
 
