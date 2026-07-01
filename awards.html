@@ -10,27 +10,245 @@
             --bg-dark: #0a0f1d;
             --panel-glass: rgba(16, 24, 48, 0.7);
             --border-glass: rgba(255, 255, 255, 0.08);
+            --glow-blue: #3b82f6;
             --glow-cyan: #06b6d4;
             --text-light: #f3f4f6;
             --text-muted: #9ca3af;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-light); }
-        header { background: rgba(10, 15, 29, 0.75); backdrop-filter: blur(12px); padding: 0.75rem 6%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-glass); }
-        .logo-link img { height: 55px; }
-        nav a { color: var(--text-light); text-decoration: none; margin-left: 25px; font-weight: 500; }
-        nav a:hover { color: var(--glow-cyan); }
-        .container { max-width: 900px; margin: 60px auto; padding: 0 20px; text-align: center; }
-        h1 { font-size: 2.5rem; margin-bottom: 20px; }
-        p { color: var(--text-muted); max-width: 600px; margin: 0 auto 40px auto; }
-        .award-banner { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 4px solid var(--glow-cyan); padding: 50px; border-radius: 12px; }
-        .award-banner i { font-size: 4rem; color: #eab308; margin-bottom: 20px; }
-        footer { background-color: #060912; text-align: center; padding: 40px; border-top: 1px solid var(--border-glass); margin-top: 150px; color: #6b7280; }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+        }
+
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vh;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Global Entrance Animations */
+        @keyframes subtleDrop {
+            from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        header { 
+            background: rgba(10, 15, 29, 0.75); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0.75rem 6%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid var(--border-glass); 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: filter 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 8px var(--glow-cyan));
+        }
+
+        .logo-img { height: 55px; width: auto; display: block; }
+
+        nav a { 
+            color: var(--text-light); 
+            text-decoration: none; 
+            margin-left: 25px; 
+            font-weight: 500; 
+            letter-spacing: 0.5px;
+            display: inline-block;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -6px;
+            left: 0;
+            background: linear-gradient(90deg, var(--glow-blue), var(--glow-cyan));
+            transform-origin: bottom right;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        nav a:hover { color: #ffffff; }
+
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .container { 
+            max-width: 1000px; 
+            margin: 60px auto; 
+            padding: 0 6%; 
+            animation: subtleDrop 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        h1 { 
+            font-size: 2.8rem; 
+            font-weight: 800;
+            margin-bottom: 15px; 
+            background: linear-gradient(135deg, #ffffff 40%, var(--glow-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-p { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 50px; }
+
+        /* Browse Filter Groups with Staggered Feel */
+        .browse-section {
+            margin-bottom: 40px;
+            background: var(--panel-glass);
+            border: 1px solid var(--border-glass);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .browse-section:hover {
+            border-color: rgba(6, 182, 212, 0.2);
+            box-shadow: 0 10px 30px rgba(5, 5, 10, 0.5);
+        }
+
+        .browse-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            color: #ffffff;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .browse-section h3 i {
+            color: var(--glow-cyan);
+            transition: transform 0.4s ease;
+        }
+
+        .browse-section:hover h3 i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* Interactive Cyber Option Capsules with Elastic Hover */
+        .pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            user-select: none;
+        }
+
+        .pill:hover {
+            background: rgba(6, 182, 212, 0.1);
+            border-color: var(--glow-cyan);
+            color: #ffffff;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.25);
+        }
+
+        .pill:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+
+        /* Animated Trophy Card */
+        .award-banner { 
+            background: var(--panel-glass); 
+            border: 1px solid var(--border-glass); 
+            border-top: 4px solid var(--glow-cyan); 
+            padding: 50px; 
+            border-radius: 12px; 
+            margin-top: 50px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: subtleDrop 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .award-banner:hover {
+            transform: scale(1.01);
+            border-color: rgba(6, 182, 212, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .award-banner i { 
+            font-size: 4rem; 
+            color: #eab308; 
+            margin-bottom: 20px; 
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-block;
+        }
+
+        .award-banner:hover i {
+            transform: scale(1.2) rotate(-5deg);
+            filter: drop-shadow(0 0 10px rgba(234, 179, 8, 0.4));
+        }
+
+        .award-banner h2 { margin-bottom: 10px; }
+
+        footer { 
+            background-color: #060912; 
+            text-align: center; 
+            padding: 40px; 
+            border-top: 1px solid var(--border-glass); 
+            margin-top: 120px; 
+            color: #6b7280; 
+            font-size: 0.88rem;
+        }
     </style>
 </head>
 <body>
+
     <header>
-        <a href="index.html" class="logo-link"><img src="B1bd7635-4927-4b3b-a5af-8913e43cdb52-removebg-preview.png" alt="Logo"></a>
+        <a href="index.html" class="logo-link">
+            <img src="B1bd7635-4927-4b3b-a5af-8913e43cdb52-removebg-preview.png" alt="GeoTrax Logo" class="logo-img">
+        </a>
         <nav>
             <a href="index.html">Home</a>
             <a href="about.html">About & Methodology</a>
@@ -40,17 +258,39 @@
 
     <div class="container">
         <h1>World Airline Awards</h1>
-        <p>Known across the flight network as the pinnacle accolade for operational excellence in the GeoFS Virtual Airline landscape.</p>
+        <p class="intro-p">Known across the flight network as the pinnacle accolade for operational excellence in the GeoFS Virtual Airline landscape.</p>
         
+        <div class="browse-section">
+            <h3><i class="fa-solid fa-layer-group"></i> Browse Awards by Airline Type</h3>
+            <div class="pill-grid">
+                <div class="pill">Full-Service Carriers</div>
+                <div class="pill">Low-Cost / Budget Airlines</div>
+                <div class="pill">Regional Operators</div>
+                <div class="pill">Charter & Alliance Fleets</div>
+            </div>
+        </div>
+
+        <div class="browse-section">
+            <h3><i class="fa-solid fa-earth-americas"></i> Browse Awards by Region</h3>
+            <div class="pill-grid">
+                <div class="pill">Asia & Pacific</div>
+                <div class="pill">Europe</div>
+                <div class="pill">North America</div>
+                <div class="pill">South America & Caribbean</div>
+                <div class="pill">Middle East & Africa</div>
+            </div>
+        </div>
+
         <div class="award-banner">
             <i class="fa-solid fa-trophy"></i>
             <h2>Awards Tracking Begins Soon</h2>
-            <p style="margin-top: 15px;">Data collection protocols commence July 1, 2026. Global user surveys will launch to register community feedback directly from virtual passengers and staff.</p>
+            <p style="margin-top: 15px; color: var(--text-muted);">Data collection protocols commence July 1, 2026. Global user surveys will launch to register community feedback directly from virtual passengers and staff.</p>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 GeoTrax Global Services.</p>
+        <p>&copy; 2026 GeoTrax Global Services. Formed on June 30, 2026. Commenced July 1, 2026.</p>
     </footer>
+
 </body>
 </html>
